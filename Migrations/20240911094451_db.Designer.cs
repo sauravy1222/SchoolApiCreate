@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSWEBAPI.Data;
 
@@ -11,9 +12,11 @@ using SMSWEBAPI.Data;
 namespace SMSWEBAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240911094451_db")]
+    partial class db
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,8 +93,8 @@ namespace SMSWEBAPI.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClassId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DOB")
                         .HasColumnType("datetime2");
@@ -133,8 +136,8 @@ namespace SMSWEBAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("studentAttenId"));
 
-                    b.Property<string>("Classname")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
